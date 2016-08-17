@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Tipply</title>
+    <link rel = "stylesheet" href ={% static "app/css/bootstrap.css"%}>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <a href="{% url 'index_view'%}">Home</a>
+        <a href= "{% url 'sign_up_view' %}">Register an account</a>
+        <a href="{%url 'login'%}">Login to your account</a>
+        <a href="{%url 'logout_view'%}?next=/">Logout</a>
+
+    </div>
+  </head>
+
+  <body>
+    <div class="container">
+      {% block content %}
+
+      {% endblock %}
+
+    </div>
+
+</html>
