@@ -20,7 +20,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login, logout
 from rest_framework.authtoken import views
 from app.views import IndexView,SignUpView,LoginView,LogoutView,EmployeeListingCreateView,ApplicantListView
-from tipplyapi.views import EmployeeListingListAPIView
+from tipplyapi.views import EmployeeListingListAPIView, EmployeeListingDetailAPIView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^logout/$', logout, name="logout_view"),
     url(r'^employee_listing_create/$',EmployeeListingCreateView.as_view(), name='employee_listing_create_view'),
     url(r'^applicant_list/$',ApplicantListView.as_view(), name='applicant_list_view'),
-    url(r'^api/employee_listings/$', EmployeeListingListAPIView.as_view(), name="employee_listing_list_api_view")
+    url(r'^api/employee_listings/$', EmployeeListingListAPIView.as_view(), name="employee_listing_list_api_view"),
+    url(r'^api/employee_listings/(?P<pk>\d+)/$', EmployeeListingDetailAPIView.as_view(), name="employee_listing_detail_api_view"),
 
 ]

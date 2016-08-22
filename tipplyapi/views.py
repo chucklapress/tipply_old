@@ -20,3 +20,9 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 class EmployeeListingListAPIView(generics.ListCreateAPIView):
     queryset = EmployeeListing.objects.all()
     serializer_class = EmployeeListingSerializer
+
+class EmployeeListingDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = EmployeeListing.objects.all()
+    serializer_class = EmployeeListingSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                      IsOwnerOrReadOnly,)
