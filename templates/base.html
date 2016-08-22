@@ -5,13 +5,18 @@
     <meta charset="utf-8">
     <title>Welcome to Tipply</title>
     <link rel = "stylesheet" href ={% static "app/css/bootstrap.css"%}>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <a href="{% url 'index_view'%}">Home</a>
-        <a href= "{% url 'sign_up_view' %}">Register an account</a>
-        <a href="{%url 'login'%}">Login to your account</a>
-        <a href="{%url 'logout_view'%}?next=/">Logout</a>
-
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+        <ul class="nav nav-pills">
+          {% if user.is_authenticated %}
+      <li role="presentation" class="active"><a href="{% url 'index_view' %}">Home</a></li>
+      <li role="presentation"><a href="{%url 'logout_view'%}?next=/">Logout</a></li>
+      <li role="presentation"><a href="{%url 'employee_listing_create_view'%}?next=/">Create a Employment contact</a></li>
+        {% else %}
+      <li role="presentation" class="active"><a href="{% url 'index_view' %}">Home</a></li>
+      <li role="presentation"><a href= "{% url 'sign_up_view' %}">Register an account</a></li>
+      <li role="presentation"><a href="{%url 'login'%}">User login</a></li>
+        {%endif%}
     </div>
   </head>
 

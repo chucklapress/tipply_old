@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login, logout
-from app.views import IndexView,SignUpView,LoginView,LogoutView
+from app.views import IndexView,SignUpView,LoginView,LogoutView,EmployeeListingCreateView,ApplicantListView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,5 +26,8 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index_view'),
     url(r'^signup/$', SignUpView.as_view(), name='sign_up_view'),
     url(r'^login/$', login, name="login_view"),
-    url(r'^logout/$', logout, name="logout_view")
+    url(r'^logout/$', logout, name="logout_view"),
+    url(r'^employee_listing_create/$',EmployeeListingCreateView.as_view(), name='employee_listing_create_view'),
+    url(r'^applicant_list/$',ApplicantListView.as_view(), name='applicant_list_view'),
+
 ]

@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.views.generic import TemplateView,View,CreateView
+from django.views.generic import TemplateView,View,CreateView,ListView
 from django.http import HttpResponse
+from app.models import EmployeeListing
 
 # Create your views here.
 
@@ -39,3 +40,11 @@ class SignUpView(CreateView):
     model = User
     form_class = UserCreationForm
     success_url = "/"
+
+class EmployeeListingCreateView(CreateView):
+    model = EmployeeListing
+    fields = ['applicant_name','applicant_email','applicant_phone','position_applying_for','post_resume_or_cover']
+    success_url = '/'
+
+class ApplicantListView(ListView):
+    model = EmployeeListing

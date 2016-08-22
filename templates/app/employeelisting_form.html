@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div class="container">
+  <h4>Create your Job application here</h4>
+  <br>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+<h5>We appreciate you taking the time to complete the form</h5>
+<h5>We will be in contact with you to begin the interview process</h5>
+
+</div>
+
+{% endblock %}
