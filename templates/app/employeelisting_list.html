@@ -5,24 +5,19 @@
 <h4>Applicant Listings:</h4>
 
 {% for object in object_list %}
-<p>********************</p>
 <br>
+<p>********************</p>
 <p>Applicants name: {{ object.applicant_name }}</p>
 <p>Applicants Email: {{ object.applicant_email }}</p>
 <p>Applicants Phone: {{ object.applicant_phone }}</p>
 <p>Applicants Position applying for: {{ object.position_applying_for }}</p>
 <p>Date of application: {{ object.date_applying }}</p>
+<p>CV or Resume: {{ object.post_resume_or_cover }}</p>
 
-<br>
+
 
 <p>********************</p>
 
 {% endfor %}
 </div>
 {% endblock %}
-
-pplicant_name = models.CharField(max_length=50)
-  applicant_email = models.EmailField(max_length=30)
-  applicant_phone = models.IntegerField(unique=True, validators=[RegexValidator(regex='^\d{10}$', message='Length has to be 10', code='Invalid number')])
-  position_applying_for = models.CharField(max_length=80)
-  date_applying = models.DateTimeField(auto_now_add=True)

@@ -11,6 +11,7 @@
           {% if user.is_authenticated %}
       <li role="presentation" class="active"><a href="{% url 'index_view' %}">Home</a></li>
       <li role="presentation"><a href="{%url 'logout_view'%}?next=/">Logout</a></li>
+      <li role="presentation"><a href="{%url 'applicant_list_view'%}?next=/">Current Applicants</a></li>
       <li role="presentation"><a href="{%url 'employee_listing_create_view'%}?next=/">Create a Employment contact</a></li>
         {% else %}
       <li role="presentation" class="active"><a href="{% url 'index_view' %}">Home</a></li>
@@ -18,14 +19,15 @@
       <li role="presentation"><a href="{%url 'login'%}">User login</a></li>
         {%endif%}
     </div>
+  </nav>
   </head>
 
   <body>
-    <div class="container">
+
       {% block content %}
 
       {% endblock %}
 
-    </div>
+  </body>
 
 </html>
