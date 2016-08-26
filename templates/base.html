@@ -13,6 +13,9 @@
       <li role="presentation"><a href="{%url 'logout_view'%}?next=/">Logout</a></li>
       <li role="presentation"><a href="{%url 'applicant_list_view'%}?next=/">Current Applicants</a></li>
       <li role="presentation"><a href="{%url 'employee_listing_create_view'%}?next=/">Create a Employment contact</a></li>
+      <li role="presentation"><a href="{%url 'employee_create_view'%}?next=/">Create new employee</a></li>
+      <li role="presentation"><a href="{%url 'employee_list_view'%}?next=/">Current rated EmployeeListing</a></li>
+      <li role="presentation"><a href="{%url 'employee_workskill_create_view'%}?next=/">Rating form</a></li>
         {% else %}
       <li role="presentation" class="active"><a href="{% url 'index_view' %}">Home</a></li>
       <li role="presentation"><a href= "{% url 'sign_up_view' %}">Register an account</a></li>
