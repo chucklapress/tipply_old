@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView,View,CreateView,ListView
 from django.http import HttpResponse
-from app.models import EmployeeListing
+from app.models import EmployeeListing, Employee, WorkSkill
 
 # Create your views here.
 
@@ -48,3 +48,18 @@ class EmployeeListingCreateView(CreateView):
 
 class ApplicantListView(ListView):
     model = EmployeeListing
+
+class EmployeeListView(ListView):
+    model = WorkSkill
+
+class EmployeeWorkSkillCreateView(CreateView):
+    model = WorkSkill
+    fields = ['employee_number','employee_name','appearence','customer_skills','team_work','adhere_company_policies','accepts_coaching','self_starting']
+    success_url = '/'
+
+class EmployeeCreateView(CreateView):
+    model = Employee
+    fields = ['employee_name','dob','address','telephone_number','federal_and_state_filling_status','department','start_date','recieved_employee_handbook','personel_notes']
+    success_url = '/'
+
+    

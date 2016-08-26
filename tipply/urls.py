@@ -19,7 +19,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login, logout
 from rest_framework.authtoken import views
-from app.views import IndexView,SignUpView,LoginView,LogoutView,EmployeeListingCreateView,ApplicantListView
+from app.views import IndexView,SignUpView,LoginView,LogoutView,EmployeeListingCreateView,ApplicantListView, EmployeeListView, EmployeeWorkSkillCreateView, EmployeeCreateView
 from tipplyapi.views import EmployeeListingListAPIView, EmployeeListingDetailAPIView
 
 urlpatterns = [
@@ -30,8 +30,11 @@ urlpatterns = [
     url(r'^signup/$', SignUpView.as_view(), name='sign_up_view'),
     url(r'^login/$', login, name="login_view"),
     url(r'^logout/$', logout, name="logout_view"),
+    url(r'^employee_create/$',EmployeeCreateView.as_view(), name='employee_create_view'),
     url(r'^employee_listing_create/$',EmployeeListingCreateView.as_view(), name='employee_listing_create_view'),
     url(r'^applicant_list/$',ApplicantListView.as_view(), name='applicant_list_view'),
+    url(r'^employee_workskill_create/$',EmployeeWorkSkillCreateView.as_view(), name='employee_workskill_create_view'),
+    url(r'^employee_list/$',EmployeeListView.as_view(), name='employee_list_view'),
     url(r'^api/employee_listings/$', EmployeeListingListAPIView.as_view(), name="employee_listing_list_api_view"),
     url(r'^api/employee_listings/(?P<pk>\d+)/$', EmployeeListingDetailAPIView.as_view(), name="employee_listing_detail_api_view"),
 

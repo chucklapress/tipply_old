@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div class="container">
+  <h4>Score employee subjectively using the following: </h4>
+  <br>
+  <h5>Work skills are graded on a scale of (1) poor to (5) excellent</h5>
+  <br>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+
+<h5>All scoring is subjective and based on interaction with immediate supervisor</h5>
+
+</div>
+
+{% endblock %}

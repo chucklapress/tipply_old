@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div class="container">
+  <h4>Please enter the new employee into the system: </h4>
+  <br>
+  <br>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+
+<h5>Thank you for entering all required fields</h5>
+
+</div>
+
+{% endblock %}

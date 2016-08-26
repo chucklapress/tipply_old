@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+<h4>Employee ratings:</h4>
+<br>
+scale of (1) to (5)  (1) poor to (5) excellent
+<br>
+{% for object in object_list %}
+<br>
+<p>********************</p>
+<p>Employee name: {{ object.employee_name }}</p>
+<p>Employee appearence: {{ object.appearence }}</p>
+<p>Customer care skills: {{ object.customer_skills }}</p>
+<p>Teamwork : {{ object.team_work }}</p>
+<p>Follows company policies: {{ object.adhere_company_policies }}</p>
+<p>Is receptive to coaching: {{ object.accepts_coaching }}</p>
+<p>Keeps Busy / self starting: {{ object.self_starting }}</p>
+
+
+
+<p>********************</p>
+
+{% endfor %}
+</div>
+{% endblock %}
