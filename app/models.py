@@ -41,7 +41,7 @@ class Employee(models.Model):
     def __str__(self):
         return self.employee_name
 
-class WorkSkills(models.Model):
+class WorkSkill(models.Model):
     appearence = models.IntegerField()
     customer_skills = models.IntegerField()
     team_work = models.IntegerField()
