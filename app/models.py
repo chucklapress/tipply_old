@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
 
+
 # Create your models here.
 
 class EmployeeListing(models.Model):
@@ -25,3 +26,29 @@ def create_token(**kwargs):
     instance = kwargs.get('instance')
     if created:
         Token.objects.create(user=instance)
+
+class Employee(models.Model):
+    employee_name = models.CharField(max_length=50)
+    dob = models.DateField(max_length=8)
+    address = models.TextField(max_length=None)
+    telephone_number = models.IntegerField(unique=True, validators=[RegexValidator(regex='^\d{10}$', message='Length has to be 10', code='Invalid number')])
+    federal_and_state_filling_status = models.CharField(max_length=30)
+    department = models.CharField(max_length=50)
+    start_date = models.DateField(max_length=8)
+    end_date = models.DateField(max_length=8)
+    recieved_employee_handbook = models.BooleanField(default=True)
+    personel_notes = models.TextField(max_length=None)
+    def __str__(self):
+        return self.employee_name
+
+class WorkSkills(models.Model):
+    appearence = models.IntegerField()
+    customer_skills = models.IntegerField()
+    team_work = models.IntegerField()
+    adhere_company_policies = models.IntegerField()
+    accepts_coaching = models.IntegerField()
+    self_starting = models.IntegerField()
+    employee_name = models.CharField(max_length=50)
+    employee_number = models.ForeignKey(Employee)
+    def __str__(self):
+        return self.employee_name
