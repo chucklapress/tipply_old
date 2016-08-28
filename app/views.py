@@ -5,6 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView,View,CreateView,ListView
 from django.http import HttpResponse
 from app.models import EmployeeListing, Employee, WorkSkill
+from django.core.urlresolvers import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+
 
 
 # Create your views here.
@@ -30,6 +35,18 @@ class LoginView(View):
             return HttpResponseRedirect(settings.LOGIN_URL)
 
         return render(request, "index.html")
+
+def user_create_view(request):
+    if request.POST:
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('index_view'))
+        else:
+            return render(request, "user_create_view.html", {"form": form})
+    form = UserCreationForm()
+    return render(request, "user_create_view.html", {"form": form})
+
 
 
 class LogoutView(View):
@@ -62,7 +79,7 @@ class EmployeeWorkSkillCreateView(CreateView):
     model = WorkSkill
     fields = ['employee_number','employee_name','appearence','customer_skills','team_work','adhere_company_policies','accepts_coaching','self_starting']
     success_url = '/'
-    
+
 
 class EmployeeCreateView(CreateView):
     model = Employee

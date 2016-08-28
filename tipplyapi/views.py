@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework import permissions
+from tipplyapi.permissions import IsOwnerOrReadOnly
 
-from app.models import EmployeeListing
+
 from tipplyapi.serializers import EmployeeListingSerializer
+from app.models import EmployeeListing
 # Create your views here.
 
 class IsOwnerOrReadOnly(permissions.BasePermission):

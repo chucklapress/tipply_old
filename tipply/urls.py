@@ -15,17 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login, logout
 from rest_framework.authtoken import views
-from app.views import IndexView,SignUpView,LoginView,LogoutView,EmployeeListingCreateView,ApplicantListView, EmployeeListView, EmployeeWorkSkillCreateView, EmployeeCreateView
+from app.views import IndexView,SignUpView,LoginView,LogoutView,EmployeeListingCreateView,ApplicantListView, EmployeeListView, EmployeeWorkSkillCreateView, EmployeeCreateView, user_create_view
 from tipplyapi.views import EmployeeListingListAPIView, EmployeeListingDetailAPIView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('^', include('django.contrib.auth.urls')),
     url(r'^api-token-auth/', views.obtain_auth_token),
+    url(r'^api-auth/', include('rest_framework.urls',namespace='rest_framework')),
     url(r'^$', IndexView.as_view(), name='index_view'),
     url(r'^signup/$', SignUpView.as_view(), name='sign_up_view'),
     url(r'^login/$', login, name="login_view"),
